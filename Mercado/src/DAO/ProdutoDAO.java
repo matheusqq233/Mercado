@@ -57,8 +57,8 @@ public class ProdutoDAO {
                 ProdutoVO pVO = new ProdutoVO();
                 pVO.setIdproduto(rs.getInt("idproduto"));
                 pVO.setNomepro(rs.getString("nomepro"));
-                pVO.setQuantidade(rs.getInt("quantidade"));
-                pVO.setValorcusto(rs.getDouble("valorcusto"));
+                pVO.setQuantidade(rs.getString("quantidade"));
+                pVO.setValorcusto(rs.getString("valorcusto"));
                 pVO.setDatavalidade(rs.getString("datavalidade"));
                 pVO.setTipoproduto(rs.getString("tipoproduto"));
                 pro.add(pVO);
@@ -103,10 +103,10 @@ public class ProdutoDAO {
             ArrayList<ProdutoVO> pro = new ArrayList<>();
             while(rs.next() ){
                 ProdutoVO pVO = new ProdutoVO();
-                pVO.setIdproduto(rs.getInt("idProduto"));
-                pVO.setNomepro(rs.getString("nomePro"));
-                pVO.setQuantidade(rs.getInt("quantidade"));
-                pVO.setValorcusto(rs.getDouble("valorCusto"));
+                pVO.setIdproduto(rs.getInt("idproduto"));
+                pVO.setNomepro(rs.getString("nomepro"));
+                pVO.setQuantidade(rs.getString("quantidade"));
+                pVO.setValorcusto(rs.getString("valorcusto"));
                 pVO.setDatavalidade(rs.getString("datavalidade"));
                 pVO.setTipoproduto(rs.getString("tipoproduto"));
                 

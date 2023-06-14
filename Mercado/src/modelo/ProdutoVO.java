@@ -9,8 +9,8 @@ public class ProdutoVO {
     
    private long idproduto;
    private String nomepro;
-   private int quantidade;
-   private double valorcusto;
+   private String quantidade;
+   private String valorcusto;
    private String tipoproduto;
 
     public String getTipoproduto() {
@@ -49,19 +49,19 @@ public class ProdutoVO {
         this.nomepro = nomepro;
     }
 
-    public int getQuantidade() {
+    public String getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
     }
 
-    public double getValorcusto() {
+    public String getValorcusto() {
         return valorcusto;
     }
 
-    public void setValorcusto(double valorcusto) {
+    public void setValorcusto(String valorcusto) {
         this.valorcusto = valorcusto;
     }
     

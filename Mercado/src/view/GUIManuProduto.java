@@ -428,7 +428,7 @@ private void filtrar() {
                                     query = "where tipoproduto like '%" + jtfPesquisaPro.getText() + "%'";
                                 }
                             } else {
-                                query = "where datavalidade like '" + jtfPesquisaPro.getText() + "'";
+                                query = "where datavalidade like '%" + jtfPesquisaPro.getText() + "%'";
                             }
                         } else {
                             query = "where valorcusto like '%" + jtfPesquisaPro.getText() + "%'";
@@ -440,7 +440,6 @@ private void filtrar() {
             } else {
                 query = "where idproduto = " + jtfPesquisaPro.getText();
             }
-
             ArrayList<ProdutoVO> pro = new ArrayList();
             pro = ps.filtrarProduto(query);
 
@@ -461,8 +460,6 @@ private void filtrar() {
     }
 }
 
-     
-     
     private void alterarProduto(){
       try{  
         int linha = jtProduto.getSelectedRow();
@@ -484,8 +481,6 @@ private void filtrar() {
             }else if(jrbEletrodomestico.isSelected()){
                 jrbEletrodomestico.setToolTipText((String) jtProduto.getValueAt(linha, 5));
             }
-           
-           
         }else{
             JOptionPane.showMessageDialog(
                     this,
@@ -509,8 +504,8 @@ private void filtrar() {
             }else{
                 pVO.setIdproduto(Integer.parseInt(jtfCodigo.getText()));
                 pVO.setNomepro(jtfNomePro.getText());
-                pVO.setQuantidade(Integer.parseInt(jtfQuantidade.getText()));
-                pVO.setValorcusto(Double.parseDouble(jtfValorCusto.getText()));
+                pVO.setQuantidade((jtfQuantidade.getText()));
+                pVO.setValorcusto((jtfValorCusto.getText()));
                 pVO.setDatavalidade(jtfDataValidade.getText());
                  if(jcbAlimento.isSelected()){
                         pVO.setTipoproduto(jcbAlimento.getToolTipText());
@@ -521,18 +516,13 @@ private void filtrar() {
                          }else if(jrbEletrodomestico.isSelected()){
                           pVO.setTipoproduto(jrbEletrodomestico.getToolTipText());
                       }
-                
-                
-                
                 ProdutoServicos ps = ServicosFactory.getProdutoServicos();
                 ps.alterarProduto(pVO);
-                
                 JOptionPane.showMessageDialog(this, "Produto alterado com sucesso!");
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, "Erro! " + e.getMessage());
         }
-        
         jbtnDeletar.setEnabled(true);
         limparTabela();
         preencherTabela();
@@ -543,8 +533,7 @@ private void filtrar() {
         jtfNomePro.setText(null);
         jtfValorCusto.setText(null);
         jtfQuantidade.setText(null);
-        jtfDataValidade.setText(null);
-      
+        jtfDataValidade.setText(null);   
     }
      
     private void jtfPesquisaProKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesquisaProKeyReleased
@@ -557,7 +546,6 @@ private void filtrar() {
         // TODO add your handling code here:
         limparTabela();
         preencherTabela();
-
     }//GEN-LAST:event_jbtnPreencherActionPerformed
 
     private void jbtnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnLimparActionPerformed
@@ -580,6 +568,7 @@ private void filtrar() {
     private void jbtnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDeletarActionPerformed
         // TODO add your handling code here:
         deletarProduto();
+        preencherTabela();
     }//GEN-LAST:event_jbtnDeletarActionPerformed
 
     private void jtfValorCustoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfValorCustoActionPerformed
@@ -591,6 +580,7 @@ private void filtrar() {
         // TODO add your handling code here:
         confirmarAlteracao();
         limparAlteracao();
+        preencherTabela();
     }//GEN-LAST:event_jbtnConfirmarAlteracaoActionPerformed
 
 

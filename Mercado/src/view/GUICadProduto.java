@@ -251,8 +251,8 @@ public class GUICadProduto extends javax.swing.JInternalFrame {
         
         
         pVO.setNomepro(jtfNomePro.getText());
-        pVO.setQuantidade(Integer.parseInt(jtfQuantidade.getText()));
-        pVO.setValorcusto(Double.parseDouble(jtfValorCusto.getText()));
+        pVO.setQuantidade((jtfQuantidade.getText()));
+        pVO.setValorcusto((jtfValorCusto.getText()));
         pVO.setDatavalidade(jtfDataValidade.getText());
         if(jcbAlimento.isSelected()){
             pVO.setTipoproduto(jcbAlimento.getToolTipText());
