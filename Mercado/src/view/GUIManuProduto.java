@@ -98,14 +98,13 @@ public class GUIManuProduto extends javax.swing.JInternalFrame {
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtfPesquisaPro, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(211, 656, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,7 +267,7 @@ public class GUIManuProduto extends javax.swing.JInternalFrame {
                                             .addComponent(jtfDataValidade, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(86, 86, 86)
                                 .addComponent(jbtnConfirmarAlteracao)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 228, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jLayeredPane2Layout.setVerticalGroup(
@@ -414,31 +413,19 @@ private void filtrar() {
             ProdutoServicos ps = ServicosFactory.getProdutoServicos();
             String pesquisa = (String) jcbPesquisaPro.getSelectedItem();
             String query;
-
-            if (!pesquisa.equals("Código")) {
-                if (!pesquisa.equals("Nome")) {
-                    if (pesquisa.equals("Quantidade")) {
-                        query = "where quantidade like '%" + jtfPesquisaPro.getText() + "%'";
-                    } else {
-                        if (!pesquisa.equals("Valor Custo")) {
-                            if (!pesquisa.equals("Data Validade")) {
-                                if (!pesquisa.equals("Tipo")) {
-                                    query = "where idproduto = " + jtfPesquisaPro.getText();
-                                } else {
-                                    query = "where tipoproduto like '%" + jtfPesquisaPro.getText() + "%'";
-                                }
-                            } else {
-                                query = "where datavalidade like '%" + jtfPesquisaPro.getText() + "%'";
-                            }
-                        } else {
-                            query = "where valorcusto like '%" + jtfPesquisaPro.getText() + "%'";
-                        }
-                    }
-                } else {
-                    query = "where nomepro like '%" + jtfPesquisaPro.getText() + "%' ";
-                }
-            } else {
-                query = "where idproduto = " + jtfPesquisaPro.getText();
+            
+            if (pesquisa.equals("Código")) {
+                 query = "where idproduto = " + jtfPesquisaPro.getText();
+            }else if(pesquisa.equals("Nome")) {
+                 query = "where nomepro like '%" + jtfPesquisaPro.getText() + "%' ";
+            }else if(pesquisa.equals("Quantidade")) {
+                 query = "where quantidade like '%" + jtfPesquisaPro.getText()+ "%' ";
+            }else if (pesquisa.equals("Valor Custo")) {
+                 query = "where valorcusto like '%" + jtfPesquisaPro.getText() + "%'";
+            }else if (pesquisa.equals("Data validade")) {
+                 query = "where datavalidade like '%" + jtfPesquisaPro.getText() + "%'";
+            }else {
+                 query = "where tipoproduto like '%" + jtfPesquisaPro.getText() + "%'";
             }
             ArrayList<ProdutoVO> pro = new ArrayList();
             pro = ps.filtrarProduto(query);
@@ -536,12 +523,6 @@ private void filtrar() {
         jtfDataValidade.setText(null);   
     }
      
-    private void jtfPesquisaProKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesquisaProKeyReleased
-        // TODO add your handling code here:
-        limparTabela();
-        filtrar();
-    }//GEN-LAST:event_jtfPesquisaProKeyReleased
-
     private void jbtnPreencherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPreencherActionPerformed
         // TODO add your handling code here:
         limparTabela();
@@ -582,6 +563,12 @@ private void filtrar() {
         limparAlteracao();
         preencherTabela();
     }//GEN-LAST:event_jbtnConfirmarAlteracaoActionPerformed
+
+    private void jtfPesquisaProKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesquisaProKeyReleased
+        // TODO add your handling code here:
+        limparTabela();
+        filtrar();
+    }//GEN-LAST:event_jtfPesquisaProKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
